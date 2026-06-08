@@ -16,5 +16,3 @@ class VK {
         bool hasInstance = false;
         bool hasDevice = false;
 };
-
-#define ENGINE_ENTRY_POINT int main() { VK vk; vk.init(); while (vk.run()) {} return vk.cleanup(); }

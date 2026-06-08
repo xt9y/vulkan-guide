@@ -124,8 +124,20 @@ int VK::cleanup() const {
 }
 
 int VK::run() const {
+
     glfwPollEvents();
     return glfwWindowShouldClose(VK::window) == GLFW_FALSE;
 }
 
-ENGINE_ENTRY_POINT
+int main() {
+
+    VK vk;
+
+    try { vk.init(); while (vk.run()) {} }
+    catch(const std::exception& error) {
+        std::cerr << error.what() << '\n';
+        return vk.cleanup();
+    };
+
+    return vk.cleanup();
+}
